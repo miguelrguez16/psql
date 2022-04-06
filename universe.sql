@@ -297,12 +297,30 @@ INSERT INTO public.galaxy_type VALUES (5, 'active', NULL);
 -- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.planet VALUES (1, false, true, 32.0, 1, 'Mercurio', 'Gaseoso', 0);
+INSERT INTO public.planet VALUES (2, false, true, 99.0, 1, 'Venus', 'Calor', 0);
+INSERT INTO public.planet VALUES (3, true, true, 99.0, 1, 'Earth', 'Azul', 98);
+INSERT INTO public.planet VALUES (4, false, true, 88.0, 1, 'Mars', 'Naranja', 3);
+INSERT INTO public.planet VALUES (5, false, true, 18.0, 1, 'Jupiter', 'Naranja', 1);
+INSERT INTO public.planet VALUES (6, false, true, 18.0, 1, 'Saturno', 'Naranja', 1);
+INSERT INTO public.planet VALUES (7, false, true, 18.0, 1, 'Urano', 'Verde', 1);
+INSERT INTO public.planet VALUES (8, false, true, 18.0, 1, 'Neputuno', 'Veosode', 0);
+INSERT INTO public.planet VALUES (9, false, true, 18.0, 2, 'Oasis', 'Brillante', 0);
+INSERT INTO public.planet VALUES (10, false, true, 18.0, 2, 'Hogwarts', 'Magic', 0);
+INSERT INTO public.planet VALUES (11, false, true, 18.0, 3, 'Anduriel', 'iron', 0);
+INSERT INTO public.planet VALUES (12, false, true, 18.0, 3, 'Istiari', 'God', 0);
 
 
 --
 -- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.star VALUES (1, 1, 'principal', 'El Sol', 'Amarillo');
+INSERT INTO public.star VALUES (2, 4, 'principal', 'Proxima Centauri', 'Amarillo');
+INSERT INTO public.star VALUES (3, 4, 'secundaria', 'alfa centauri A', 'Amarillo');
+INSERT INTO public.star VALUES (4, 4, 'terciaria', 'alfa centauri B', 'Amarillo');
+INSERT INTO public.star VALUES (5, 5, 'principal', 'KUUN', 'Amarillo');
+INSERT INTO public.star VALUES (6, 3, 'principal', 'Anduin', 'Rojo');
 
 
 --
@@ -330,14 +348,14 @@ SELECT pg_catalog.setval('public.moon_moon_id_seq', 1, false);
 -- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.planet_planet_id_seq', 1, false);
+SELECT pg_catalog.setval('public.planet_planet_id_seq', 12, true);
 
 
 --
 -- Name: star_star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.star_star_id_seq', 1, false);
+SELECT pg_catalog.setval('public.star_star_id_seq', 6, true);
 
 
 --
