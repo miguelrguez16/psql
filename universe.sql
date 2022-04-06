@@ -51,8 +51,8 @@ CREATE TABLE public.galaxy (
     galaxy_id integer NOT NULL,
     planet_types integer,
     description text NOT NULL,
-    name character varying(30) NOT NULL,
-    galaxy_type_id integer
+    galaxy_type_id integer,
+    name character varying(30) NOT NULL
 );
 
 
@@ -86,7 +86,8 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 
 CREATE TABLE public.galaxy_type (
     galaxy_type_id integer NOT NULL,
-    name_type text NOT NULL
+    name character varying(30) NOT NULL,
+    other_data text
 );
 
 
@@ -122,7 +123,8 @@ CREATE TABLE public.moon (
     moon_id integer NOT NULL,
     planet_id integer,
     name character varying(30) NOT NULL,
-    desctiption text NOT NULL
+    desctiption text NOT NULL,
+    man_in_the_mon boolean
 );
 
 
@@ -196,9 +198,10 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 CREATE TABLE public.star (
     star_id integer NOT NULL,
-    name character varying(30),
     galaxy_id integer,
-    description text NOT NULL
+    description text NOT NULL,
+    name character varying(30) NOT NULL,
+    color character varying(20)
 );
 
 
@@ -265,17 +268,23 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 -- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.galaxy VALUES (1, 4, 'old galaxy', 1, 'Milky Way');
+INSERT INTO public.galaxy VALUES (2, 1, 'old galaxy', 2, 'Enana del can mayor');
+INSERT INTO public.galaxy VALUES (3, 1, 'old galaxy', 1, 'Enana eliptica');
+INSERT INTO public.galaxy VALUES (4, 1, 'old galaxy', 1, 'Nube de Magallanes');
+INSERT INTO public.galaxy VALUES (5, 1, 'old galaxy', 1, 'El dragon');
+INSERT INTO public.galaxy VALUES (6, 1, 'old galaxy', 1, 'El fogon');
 
 
 --
 -- Data for Name: galaxy_type; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.galaxy_type VALUES (1, 'eliptical');
-INSERT INTO public.galaxy_type VALUES (2, 'spiral');
-INSERT INTO public.galaxy_type VALUES (3, 'lenticular');
-INSERT INTO public.galaxy_type VALUES (4, 'irregular');
-INSERT INTO public.galaxy_type VALUES (5, 'active');
+INSERT INTO public.galaxy_type VALUES (1, 'eliptical', NULL);
+INSERT INTO public.galaxy_type VALUES (2, 'spiral', NULL);
+INSERT INTO public.galaxy_type VALUES (3, 'lenticular', NULL);
+INSERT INTO public.galaxy_type VALUES (4, 'irregular', NULL);
+INSERT INTO public.galaxy_type VALUES (5, 'active', NULL);
 
 
 --
@@ -300,7 +309,7 @@ INSERT INTO public.galaxy_type VALUES (5, 'active');
 -- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 1, false);
+SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 6, true);
 
 
 --
@@ -332,11 +341,27 @@ SELECT pg_catalog.setval('public.star_star_id_seq', 1, false);
 
 
 --
+-- Name: galaxy galaxy_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy
+    ADD CONSTRAINT galaxy_name_key UNIQUE (name);
+
+
+--
 -- Name: galaxy galaxy_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.galaxy
     ADD CONSTRAINT galaxy_pkey PRIMARY KEY (galaxy_id);
+
+
+--
+-- Name: galaxy_type galaxy_type_other_data_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy_type
+    ADD CONSTRAINT galaxy_type_other_data_key UNIQUE (other_data);
 
 
 --
@@ -377,6 +402,14 @@ ALTER TABLE ONLY public.planet
 
 ALTER TABLE ONLY public.planet
     ADD CONSTRAINT planet_pkey PRIMARY KEY (planet_id);
+
+
+--
+-- Name: star star_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.star
+    ADD CONSTRAINT star_name_key UNIQUE (name);
 
 
 --
