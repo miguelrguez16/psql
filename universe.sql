@@ -291,6 +291,26 @@ INSERT INTO public.galaxy_type VALUES (5, 'active', NULL);
 -- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.moon VALUES (1, 3, 'Luna', 'moon', true);
+INSERT INTO public.moon VALUES (2, 12, 'Titan', 'moon', false);
+INSERT INTO public.moon VALUES (4, 6, 'Europa', 'moon', false);
+INSERT INTO public.moon VALUES (5, 6, 'Ganimedes', 'moon', false);
+INSERT INTO public.moon VALUES (6, 6, 'Io', 'moon', false);
+INSERT INTO public.moon VALUES (7, 6, 'Calisto', 'moon', false);
+INSERT INTO public.moon VALUES (8, 6, 'Amaltea', 'moon', false);
+INSERT INTO public.moon VALUES (9, 6, 'Valetudo', 'moon', false);
+INSERT INTO public.moon VALUES (10, 4, 'Fobos', 'moon', false);
+INSERT INTO public.moon VALUES (11, 4, 'Deimos', 'moon', false);
+INSERT INTO public.moon VALUES (12, 6, 'Enceladdo', 'moon', false);
+INSERT INTO public.moon VALUES (13, 6, 'Tetis', 'moon', false);
+INSERT INTO public.moon VALUES (14, 6, 'Dione', 'moon', false);
+INSERT INTO public.moon VALUES (15, 6, 'Rea', 'moon', false);
+INSERT INTO public.moon VALUES (16, 6, 'Hiperion', 'moon', false);
+INSERT INTO public.moon VALUES (17, 6, 'Epimeteo', 'moon', false);
+INSERT INTO public.moon VALUES (18, 6, 'Pan', 'moon', false);
+INSERT INTO public.moon VALUES (19, 6, 'Febe', 'moon', false);
+INSERT INTO public.moon VALUES (20, 6, 'Dafne', 'moon', false);
+INSERT INTO public.moon VALUES (21, 10, 'Harry', 'potter', false);
 
 
 --
@@ -341,7 +361,7 @@ SELECT pg_catalog.setval('public.galaxy_type_galaxy_type_id_seq', 5, true);
 -- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.moon_moon_id_seq', 1, false);
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 21, true);
 
 
 --
