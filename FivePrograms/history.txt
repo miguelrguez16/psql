@@ -1,0 +1,36 @@
+    1  [[ "hello world" =~ ^h ]]; echo $?
+    2  [[ "hello world" =~ ^h.+d$ ]]; echo $?
+    3  VAR="hello world"
+    4  echo $VAR
+    5  [[ $VAR == "hello world" ]]; echo $?
+    6  [[ $VAR == \?$ ]]; echo $?
+    7  [[ $VAR =~ \?$ ]]; echo $?
+    8  [[ test? =~ \?$ ]]; echo $?
+    9  ./fortune.sh 
+   10  help if
+   11  ./fortune.sh 
+   12  ./fortune.sh 
+   13  ./fortune.sh 
+   14  ./fortune.sh 
+   15  touch fice.sh
+   16  mv fice.sh five.sh
+   17  rm five.sh 
+   18  touch five.sh
+   19  history
+   20  chmod +x five.sh 
+   21  ./five.sh 
+   22  clear
+   23  ./five
+   24  ./five.sh 
+   25  gelp
+   26  help
+   27  help type
+   28  type echo
+   29  type read
+   30  type if
+   31  type then
+   32  type bash
+   33  type psql
+   34  type five.sh 
+   35  type ./five.sh 
+   36  history > histry.txt
