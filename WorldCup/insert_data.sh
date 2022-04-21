@@ -71,4 +71,3 @@ done
 
 echo $($PSQL "SELECT * FROM teams;")
 echo $($PSQL "SELECT * FROM games;")
-
