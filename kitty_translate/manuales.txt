@@ -1,0 +1,33 @@
+// grep 
+grep <pattern> <file>
+--color -> resalta
+-n -> indica la linea en la que casa del texto
+-c -> numero de lineas en la que coincide el patron
+-o -> indica la cantidad de palabras (1 por fila) que aciertan con el patron
+
+
+grep -o 'cat[a-z]*' kitty_ipsum_1.txt --> sacara solo las concidencias --> puedes contarlas
+
+
+// sed 
+
+sed can replace text like this: sed 's/<pattern_to_replace>/<text_to_replace_it_with>/' <filename>. 
+By default, it won't replace the text in the file. It will output it to stdout. 
+Use it to replace r with 2 in the name.txt file and the output prints to the terminal.
+
+
+You can add regex flags after the last / in the sed argument. A g, for global,
+ would replace all instances of a matched pattern, or an i to ignore the case of the pattern.
+
+
+sed 's/free/f233/' name.txt 
+sed 's/freecodecamp/f233C0d3C@mp/i' name.txt 
+con -E utilizas patrones avanzados y puedes poner |
+con g (flag) -> global
+
+
+MANUAL DE WC
+contador de lineas:  cat kitty_ipsum_1 | wc -l
+contador de palabras:  cat kitty_ipsum_1.txt | wc -w >> kitty_info.txt
+contador de caracteres:  wc -m < kitty_ipsum_1.txt >> kitty_info.txt 
+
