@@ -1,0 +1,23 @@
+validar patron numerico [[ a =~ [0-9] ]]; echo $?
+
+[[ a1 =~ [0-9] ]]; echo $?
+That printed 0 for true. a1 does contain a number 
+from 0-9. Enter the same command, but change the 
+pattern to ^[0-9]$. The ^ signifies the start of 
+the pattern, and $ means the end. So the input will
+ have to start, contain a number 0-9, and end.
+
+
+ [[ 1 =~ ^[0-9]$ ]]; echo $?
+
+
+Add a + after the [0-9] to allow any strings 
+that start, contain one or more numbers, and end.
+
+
+[[ 11 =~ ^[0-9]+$ ]]; echo $?
+
+
+subshell --> $(echo $BIKE_INFO | sed 's/ |/"/') #subshell
+
+^ --> caret
