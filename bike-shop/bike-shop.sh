@@ -96,9 +96,62 @@ RENT_MENU() {
 }
 
 RETURN_MENU() {
-  #get customer info
-  #if not found
-  #send to main menu
+  # get customer info
+  echo -e "\nWhat's your phone number?"
+  read PHONE_NUMBER
+  CUSTOMER_ID=$($PSQL "SELECT customer_id FROM customers WHERE phone='$PHONE_NUMBER'")
+  # if not found
+  if [[ -z $CUSTOMER_ID ]]
+  then 
+    # send to main menu
+    MAIN_MENU "I could not find a record for that phone number."
+  else
+    #get customer's rentals
+    CUSTOMER_RENTALS=$($PSQL "select bike_id, type, size from bikes inner join rentals using (bike_id) inner join customers using (customer_id) where phone= '$PHONE_NUMBER' AND date_returned is NULL order by bike_id;")
+    
+    #if no rentals 
+    if [[ -z $CUSTOMER_RENTALS ]]
+    then
+      # send to main menu
+      MAIN_MENU "You do not have any bikes rented."
+    else
+      #display rented bikes
+      echo -e "\nHere are your rentals:"
+      echo "$CUSTOMER_RENTALS" | while read BIKE_ID BAR TYPE BAR SIZE
+      do
+        echo "$BIKE_ID) $SIZE\" $TYPE Bike"
+      done
+      #ask for bike to return
+      echo -e "\nWhich one would you like to return?"
+      read BIKE_ID_TO_RETURN
+      #if not a number
+      if [[ ! $BIKE_ID_TO_RETURN =~ ^[0-9]+$ ]]
+      then
+        #send to main menu
+        MAIN_MENU "That is not a valid bike number."
+      else
+        #check if input is rented
+        RENTAL_ID=$($PSQL "select rental_id from rentals inner join customers using (customer_id) where phone='$PHONE_NUMBER' AND bike_id=$BIKE_ID_TO_RETURN AND date_returned is NULL")
+        #if input not rented
+        if [[ -z $RENTAL_ID ]]
+        then
+          #send to main menu
+          MAIN_MENU "You do not have that bike rented."
+        else
+          #update date_returned
+          RETURN_BIKE_RESULT=$($PSQL "UPDATE rentals SET date_returned = NOW() WHERE rental_id=$RENTAL_ID")
+          #set bike availability to true
+          SET_TO_TRUE_RESULT=$($PSQL "UPDATE bikes SET available = true WHERE bike_id=$BIKE_ID_TO_RETURN")
+          #send to main menu
+          MAIN_MENU "Thank you for returning your bike."
+           
+        fi
+      fi
+      
+    fi
+  fi
+
+
 }
 
 EXIT() {
