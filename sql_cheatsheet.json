@@ -20,6 +20,13 @@
       "rename": "ALTER TABLE table_name RENAME COLUMN column_name TO new_name;",
       "primary_key": "ALTER TABLE table_name ADD PRIMARY KEY(column_name);",
       "foreign_key": "ALTER TABLE table_name ADD FOREIGN KEY(column_name) REFERENCES table_name(column_name);"
+    },
+    "joins":{
+      "inner": "SELECT * FROM table1_name INNER JOIN table2_name using(id);",
+      "right": "SELECT * FROM table1_name AS t1 RIGHT JOIN table2_name AS t2 ON t1.id=t2.id;",
+      "left": "SELECT * FROM table1_name AS t1 LEFT JOIN table2_name AS t2 ON t1.id=t2.id;",
+      "full": "SELECT * FROM table1_name AS t1 FULL JOIN table2_name AS t2 ON t1.id=t2.id;",
     }
+
   }
   
