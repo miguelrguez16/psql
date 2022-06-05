@@ -1,0 +1,21 @@
+DESCARGA HELLOWORLD
+https://github.com/aeimer/java-example-helloworld-war/blob/master/build-war.sh
+
+WILDFLY
+https://hub.docker.com/r/bitnami/wildfly
+
+CONSOLA
+http://127.0.0.1:9990/console/index.html
+
+PROBAR HELLOWORLD
+http://localhost:8080/helloworld/
+
+METRICAS SERVIDOR
+http://localhost:9990/metrics/
+
+PROMETHEUS
+http://localhost:9090/
+
+
+GRAFANA
+http://localhost:3000/

@@ -1,0 +1,32 @@
+docker images
+docker ps -a
+
+docker pull 
+
+docker rm /start/stop
+docker system prune //->Eliminar todos los contenedores detenidos
+docker stop $(docker ps -a -q)
+
+
+docker image rm
+docker logs <contenedor>
+
+// COMPOSE
+docker-compose -f <archivo.yml> pull <-- DEscarga
+docker-compose -f <archivo.yml> up <-- Comienzo
+
+// volumenes
+docker volume ls 
+docker volume prune
+
+// IMAGENES
+docker rmi $(docker images -a -q)
+
+
+// REDES
+docker network ls
+docker network prune
+
+// ESTADISTICAS DE USO
+docker stats 
+docker stats --no-stream

@@ -1,0 +1,10 @@
+# prometheus.yml
+global:
+  scrape_interval: 1s
+  external_labels:
+    monitor: 'my-monitor'
+
+scrape_configs:
+  - job_name: 'metrics'
+    static_configs:
+      - targets: ['localhost:9990']
